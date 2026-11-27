@@ -9,8 +9,12 @@ allowed-tools:
 
 # Regenerate the trait index
 
-If `$ARGUMENTS` is `--check-spec`, run the compatibility check from inside the
-target project, report its result, and stop.
+Run the bundled script from inside the target project with Bash and Awk.
+In OpenCode, use the base directory reported by the `skill` tool and run
+`bash` with the absolute path to `generate.sh` and the arguments shown below.
+
+If the user requests `--check-spec`, run the compatibility check, report its
+result, and stop.
 
 ```bash
 "${CLAUDE_SKILL_DIR}/generate.sh" --check-spec
@@ -19,7 +23,7 @@ target project, report its result, and stop.
 `traits/README.md` is built from the frontmatter of the trait files. It is never edited
 by hand, because a hand-edited index drifts from the files it lists.
 
-From inside the target project, run the bundled script. It requires Bash and Awk.
+To refresh the index, run the script without arguments.
 
 ```bash
 "${CLAUDE_SKILL_DIR}/generate.sh"

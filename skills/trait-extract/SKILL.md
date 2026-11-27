@@ -6,10 +6,13 @@ argument-hint: "<pull request number | base..head>"
 
 # Extract traits from a reviewed pull request
 
-Turn recurring conventions identified in a review into proposed trait files. Run
-`trait-index --check-spec` first and stop if it fails. Read `traits/SPEC.md`, or use the bundled
-`${CLAUDE_SKILL_DIR}/../trait-index/SPEC.md` if the project has no copy. Read
-`traits/README.md`, or read the trait files directly if the index is missing or stale.
+Turn recurring conventions identified in a review into proposed trait files.
+Load `trait-index` and follow its `--check-spec` instructions first. Stop if
+the check fails. Read `traits/SPEC.md`. If the project has no copy, read
+`SPEC.md` from the base directory of the loaded `trait-index` skill. In
+Claude Code, the bundled file is at `${CLAUDE_SKILL_DIR}/../trait-index/SPEC.md`.
+Read `traits/README.md`, or read the trait files directly if the index is
+missing or stale.
 
 You propose. A person ratifies by merging, so write files but never commit them.
 
@@ -18,7 +21,7 @@ one where they only fixed substance, it finds nothing, and step 2 says to stop.
 
 ## 1. Find what the review changed
 
-For a pull request number in `$ARGUMENTS`, use the repository host's tools to fetch
+For a requested pull request number, use the repository host's tools to fetch
 the commits, reviews, inline comments and diff. The following commands fetch them
 for GitHub pull request 123.
 

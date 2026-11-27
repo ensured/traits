@@ -17,10 +17,12 @@ rationale changes. See the [file format](../skills/trait-index/SPEC.md) and
 
 ## Review a change
 
-Run `/traits:trait-check main...HEAD` to check a branch against the ratified
-traits at the merge base. The review uses the rules at the start of the diff
-and reports proposed rule edits separately. For a saved diff, provide its exact
-base with `/traits:trait-check change.diff --base <base-commit>`.
+Use `trait-check` with `main...HEAD` to check a branch against the ratified
+traits at the merge base. Run `/traits:trait-check main...HEAD` in Claude Code
+or ask OpenCode to load `trait-check` and review that range. The review uses
+the rules at the start of the diff and reports proposed rule edits separately.
+For a saved diff, run `/traits:trait-check change.diff --base <base-commit>`
+in Claude Code or give OpenCode the file and its exact `--base <base-commit>`.
 
 ## Claude Code commands
 
