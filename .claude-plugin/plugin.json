@@ -1,0 +1,6 @@
+{
+  "name": "traits",
+  "version": "0.1.0",
+  "description": "Document recurring code patterns and review changes against them.",
+  "author": { "name": "Traits Contributors" }
+}

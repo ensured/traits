@@ -1,0 +1,12 @@
+{
+  "name": "traits",
+  "description": "Skills for documenting and reviewing recurring code patterns.",
+  "owner": { "name": "Traits Contributors" },
+  "plugins": [
+    {
+      "name": "traits",
+      "source": "./",
+      "description": "Document recurring code patterns and review changes against them."
+    }
+  ]
+}
