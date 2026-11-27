@@ -20,7 +20,7 @@ review the change directly.
 Resolve refs to commit IDs before reading the diff or traits. Use the same base
 commit for both.
 
-- For a pull request number in `$ARGUMENTS`, get the target and head commit IDs
+- For a requested pull request number, get the target and head commit IDs
   from the repository host. For example, use `gh pr view 123 --json baseRefOid,headRefOid`
   on GitHub. Use the merge base for those commits as the comparison base and
   the pinned head as the endpoint. If the host supplies the diff, verify it is

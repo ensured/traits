@@ -7,12 +7,13 @@ argument-hint: "[path]"
 # Derive traits from existing code
 
 Find the shapes the code already repeats and write them down as proposed trait files.
-Run `trait-index --check-spec` first and stop if it fails. Read `traits/SPEC.md`.
-If the project has no copy, read the bundled
-`${CLAUDE_SKILL_DIR}/../trait-index/SPEC.md`.
+Load `trait-index` and follow its `--check-spec` instructions first. Stop if
+the check fails. Read `traits/SPEC.md`. If the project has no copy, read
+`SPEC.md` from the base directory of the loaded `trait-index` skill. In
+Claude Code, the bundled file is at `${CLAUDE_SKILL_DIR}/../trait-index/SPEC.md`.
 
-Scope is `$ARGUMENTS` if a path was given, otherwise the whole repository. On a large
-codebase, work one area at a time.
+Use the path from the request as the scope. With no path, cover the whole
+repository. On a large codebase, work one area at a time.
 
 You propose. A person ratifies by merging, so write files but never commit them.
 

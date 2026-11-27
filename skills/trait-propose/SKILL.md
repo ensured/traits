@@ -6,13 +6,16 @@ argument-hint: "<the pattern, in a sentence>"
 
 # Propose a trait from a stated pattern
 
-Compare the stated convention with the project's traits and code before writing a
-proposal. Run `trait-index --check-spec` first and stop if it fails. Read
-`traits/SPEC.md`, or use the bundled
-`${CLAUDE_SKILL_DIR}/../trait-index/SPEC.md` if the project has no copy. Read
-`traits/README.md`, or read the trait files directly if the index is missing or stale.
+Compare the stated convention with the project's traits and code before writing
+a proposal. Load `trait-index` and follow its `--check-spec` instructions first.
+Stop if the check fails. Read `traits/SPEC.md`. If the project has no copy,
+read `SPEC.md` from the base directory of the loaded `trait-index` skill.
+In Claude Code, the bundled file is at `${CLAUDE_SKILL_DIR}/../trait-index/SPEC.md`.
+Read `traits/README.md`, or read the trait files directly if the index is
+missing or stale.
 
-The pattern is `$ARGUMENTS`. If none was given, ask for it in one sentence.
+Use the pattern stated in the request. If none was given, ask for it in one
+sentence.
 
 You propose. A person ratifies by merging, so write files but never commit them.
 

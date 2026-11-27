@@ -2,13 +2,16 @@
 
 ## Claude Code
 
-From a source checkout or the extracted plugin ZIP, register the marketplace
-and install the plugin.
+Register the GitHub marketplace and install the plugin. Your Git client needs
+read access to `ensured/traits`.
 
 ```sh
-claude plugin marketplace add "$PWD"
+claude plugin marketplace add ensured/traits
 claude plugin install traits@traits
 ```
+
+From a source checkout or the extracted plugin ZIP, register the local
+marketplace with `claude plugin marketplace add "$PWD"`.
 
 Start Claude Code in the project where you want to use Traits. For a single
 session, run `claude --plugin-dir /path/to/traits` from that project. Use the
@@ -17,6 +20,24 @@ path to the checkout or extracted plugin.
 For a standalone install, extract the skills ZIP into your project's
 `.claude/skills/`, or copy all six directories from `skills/` there. Invoke
 standalone skills without the `traits:` prefix.
+
+## OpenCode
+
+From the project root, install all six skills with the
+[Skills CLI](https://github.com/vercel-labs/skills). It requires Node.js
+22.20 or later.
+
+```sh
+npx skills add ensured/traits --agent opencode --skill '*'
+```
+
+You can also extract `traits-skills-<version>.zip` into `.opencode/skills/`.
+Download the ZIP from [GitHub Releases](https://github.com/ensured/traits/releases),
+or copy the six directories from a source checkout's `skills/` directory.
+Keep `generate.sh` and `SPEC.md` alongside `trait-index/SKILL.md`.
+
+Ask OpenCode to use `trait-index` to initialize or refresh your project's
+trait index. In OpenCode V2, you can invoke the skill with `@trait-index`.
 
 ## Direct use
 
