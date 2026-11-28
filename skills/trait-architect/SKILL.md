@@ -1,54 +1,76 @@
 ---
 name: trait-architect
-description: Interview a contributor or maintainer about a project's coding conventions. Use for guided onboarding to a codebase or to help someone turn their design preferences into proposed traits.
+description: Guide a contributor through a change or interview a maintainer about coding conventions. Inspect code, workflow DAGs and journeys to find review decisions and turn agreed patterns into proposed traits.
 ---
 
 # Onboard someone to a project's conventions
 
-Start with a change the person expects to make or a choice they often explain
-in review. If they gave you one, start there. For a newcomer without a task,
-ask, "Which part of the project would you like to work on first?" For a
-maintainer, try "What do you usually walk a new contributor through?"
-Wait for their answer.
+Start with the change, workflow, journey or review decision the person named.
+If they gave none, ask what they expect to work on first or often explain in
+review. Use the answer to bound the interview. Someone asking for a walkthrough
+can learn what the team already does without having to set policy.
 
-## Discuss one choice
+## Choose the next decision
 
-Read the relevant project guidance and `traits/README.md` at the project
-root, if present. Open any matching trait and a few files in the area the
-person named. If the catalogue is missing or stale, read the trait files
-directly. For someone learning an established convention, show where it
-applies in their first change and explain the reason if one is documented.
+Read the project's guidance and applicable files in `traits/`. The catalogue
+in `traits/README.md` can help find them. When the change touches a workflow
+graph or a journey, follow the [inspection guide](inspection.md) to trace it
+to code and order the sites. Otherwise use repo-relative path, then line
+number. Use the consumer's files as evidence.
 
-Pick one decision a reviewer would care about. Show a real call site, or
-two if the code uses competing approaches. Ask one question and wait for
-the answer. If there is no example yet, ask how they want the first one
-to work. For example, after showing a CLI command that receives an output
-stream, ask, "If my next command called `print()` here, would you ask me to
-change it in review?" Adapt the next question to what they say.
+Take an explicitly requested decision first. At each site explain any applicable
+trait. Show an example for a settled convention. Look for a choice the next
+contributor will actually face, including any conflict with a written rule.
+At that site, take a split between implementations before an undocumented
+recurring shape. Break ties by source line, then symbol name. Discuss a shared
+choice once and use the other sites as comparisons.
+In new code, start with the first planned change and label examples hypothetical.
 
-Find out when their preference applies, what prompted it, or which exception
-matters. Ask only for what is still unclear. If they want your opinion, give
-a recommendation and its tradeoff, then let them choose. "Either is fine",
-"I don't know" and "skip" all let you move on. A newcomer can finish with
-an explanation of the existing code and no proposed traits.
+Keep the ordered topics, evidence and answers in the conversation. Return to
+the next untouched topic after each decision. If the person changes the scope,
+honor it and keep answers that still apply. A request to pause or finish takes
+effect immediately, including in the middle of a topic.
 
-## Turn the answer into a trait
+## Interview one choice at a time
 
-For a recurring choice the person wants contributors to follow, use
-`trait-propose` with their wording, scope, reason and the sites you opened.
-It checks the format and existing traits, compares the choice with the code,
-and writes a proposal and refreshes the index when the evidence supports it.
-Keep the person's reason in their own words. If an existing trait covers the
-answer, show it. If the answer would change that trait, surface the conflict
-before drafting an edit. A maintainer ratifies a proposal by merging it.
+Show the exact line another contributor might write and ask **one question per
+turn**. Start with the first unanswered point below. Use what the person already
+told you, including answers they volunteered to later questions. Look up facts
+the repository can answer. Ask the person for judgments.
 
-In a new project, or when the code has yet to adopt the preferred shape,
-give the candidate `description` and `when` in the conversation. Include the
-person's reason if supplied and name the first change where the team could
-try the idea. A one-off decision can stay with that change. An answer about
-what a user experiences over time can become a journey if the person wants
-to explore it.
+| Order | What to establish | A question to adapt to the code |
+| --- | --- | --- |
+| 1 | Review decision | “Here the handler passes the caller's key. The other handler allocates one. What would you accept in the new handler?” |
+| 2 | Applicability | “Which operations need to reuse the caller's key?” Get a condition someone can recognize in another file. |
+| 3 | Boundary | Try the proposed rule on a second caller, the closest departure or an alternate path. “The replay worker has no caller. What should it do?” If only a hypothetical case exists, say so. |
+| 4 | Reason and cost | “What goes wrong for the caller if the handler picks a fresh key?” Where two forms have real costs, ask which cost the team accepts. Keep the person's own reason, including an explicit “no particular reason”. |
 
-Follow the next topic the person raises. When they are done or the requested
-area is covered, recap the existing traits worth reading, the proposals
-written and any choices still open. Omit empty categories.
+Apply the answer to the original site and the boundary case. If two rules
+still fit the answer, find the smallest change they would lead someone to
+review differently. For a journey-backed choice, hold the outcome fixed.
+Two adapters can both forward the original key while only one calls a shared
+helper. Would the reviewer accept both? If the person wants your
+recommendation, explain the tradeoff and let them choose.
+
+“I usually do this” can describe a personal habit. Ask whether they would
+request a change from someone who chose differently. “Either” closes the
+choice as discretionary. When the choice or its scope remains disputed or
+unknown, park the topic and advance. A bare “skip” also advances. If they
+skip just the rationale, keep the agreed convention and leave its reason out.
+Reopen a parked topic only when the person asks or supplies new evidence.
+
+## Use the answer
+
+For a walkthrough, leave files alone. When the person wants to encode a
+convention, read back the code shape, scope and exceptions at the cited sites.
+Carry their wording, reason and evidence to `trait-propose` for the code and
+duplicate checks, proposal and index update. A maintainer ratifies by merging.
+If a trait already covers the decision, show how to use it. Surface a conflict
+with an existing trait for the person to resolve before editing.
+
+Keep a one-off choice with its change. For a preference without supporting
+code, give a candidate `description` and `when` in chat and name the first
+change that could exercise it. Keep observable behavior with its journey.
+When the area is covered or the person stops, recap what they can apply to
+their change, any proposals written, and what remains open or unvisited.
+For a pause, name the next topic or unanswered point so they can resume.

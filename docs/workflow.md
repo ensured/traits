@@ -6,12 +6,17 @@ Use `trait-architect` when someone wants to learn the codebase or has
 opinions about its conventions but hasn't put them into words yet. Start
 with their next change or something they often explain in review.
 
-For a CLI change, the architect might open a command that takes an output
-stream and ask whether a reviewer would accept a direct call to `print()`.
-The answer might be that tests supply their own stream, or that either form
-is fine. The architect follows up on the person's answer and uses
-`trait-propose` to draft a supported convention. A preference that the
-project has yet to try stays in the conversation with a suggested first use.
+For a new workflow task, the architect follows its declared dependencies and
+opens the code on both sides of a handoff. If a journey covers a retry, it
+also looks at what the actor observes. Recovering the original receipt is a
+journey property. Whether every adapter should forward the stored purchase
+key is a question for code review.
+
+Expect one question at a time. The architect asks what you would accept in
+review, where that answer applies, how you would handle a counterexample,
+and why the distinction matters. You can leave a choice open, skip it, or
+stop. Agreed conventions with code behind them go to `trait-propose`.
+A preference the project has yet to try stays in the conversation.
 
 ## Write a trait
 
