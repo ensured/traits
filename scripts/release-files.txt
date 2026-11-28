@@ -1,6 +1,7 @@
 .claude-plugin/marketplace.json
 .claude-plugin/plugin.json
 .gitignore
+LICENSE
 README.md
 docs/install.md
 docs/releasing.md
@@ -34,6 +35,8 @@ examples/test-model-factory.md
 examples/unseen-is-not-found.md
 scripts/package.py
 scripts/release-files.txt
+skills/trait-architect/SKILL.md
+skills/trait-architect/inspection.md
 skills/trait-capture/SKILL.md
 skills/trait-check/SKILL.md
 skills/trait-derive/SKILL.md

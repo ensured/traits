@@ -18,12 +18,12 @@ session, run `claude --plugin-dir /path/to/traits` from that project. Use the
 path to the checkout or extracted plugin.
 
 For a standalone install, extract the skills ZIP into your project's
-`.claude/skills/`, or copy all six directories from `skills/` there. Invoke
+`.claude/skills/`, or copy the skill directories from `skills/` there. Invoke
 standalone skills without the `traits:` prefix.
 
 ## OpenCode
 
-From the project root, install all six skills with the
+From the project root, install the skills with the
 [Skills CLI](https://github.com/vercel-labs/skills). It requires Node.js
 22.20 or later.
 
@@ -33,7 +33,7 @@ npx skills add ensured/traits --agent opencode --skill '*'
 
 You can also extract `traits-skills-<version>.zip` into `.opencode/skills/`.
 Download the ZIP from [GitHub Releases](https://github.com/ensured/traits/releases),
-or copy the six directories from a source checkout's `skills/` directory.
+or copy the skill directories from a source checkout's `skills/` directory.
 Keep `generate.sh` and `SPEC.md` alongside `trait-index/SKILL.md`.
 
 Ask OpenCode to use `trait-index` to initialize or refresh your project's
