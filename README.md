@@ -18,6 +18,14 @@ For OpenCode, run this from the project root.
 npx skills add ensured/traits --agent opencode --skill '*'
 ```
 
+In Claude Code, start an onboarding conversation with a change you want to make.
+
+```text
+/traits:trait-architect I'm adding my first CLI command here.
+```
+
+In OpenCode V2, use `@trait-architect` with the same prompt.
+
 - [Install from a local checkout or ZIP](docs/install.md)
 - [Write and review traits](docs/workflow.md)
 - [Trait file format](skills/trait-index/SPEC.md)

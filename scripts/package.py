@@ -107,7 +107,7 @@ def build_release(output):
         for path, data in files.items()
         if path.parts[:1] == ("skills",)
     }
-    skills.update({path: files[path] for path in NOTICES if path in files})
+    skills.update({Path("trait-index") / path: files[path] for path in NOTICES if path in files})
     source = {Path("traits") / path: data for path, data in files.items()}
 
     destination = output / f"traits-{version}"
